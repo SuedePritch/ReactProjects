@@ -1,23 +1,22 @@
 import {useState} from 'react';
+import BlogList from './BlogList';
 
 const Home = () => {
     const [blog, setBlog] = useState([
-        {title: 'My New Website', body: 'This is a beginner react project blog', author: 'James Pritchard', id:1},
-        {title: 'Welcome Party', body: 'Getcha party hats on because...', author: 'Bob Smith', id:2},
-        {title: 'Basic React Blog', body: 'Examples of how to use React to...', author: 'Joanne Micheals', id:3},
-        {title: 'Sample Blog Post', body: 'I just got a new puppy. Her name is...', author: 'Roger Johnson', id:4},
-        {title: 'Shrimp Gumbo Recipe', body: 'Good ole New Orleans Shrimp Gumbo...', author: 'Claire Clark', id:5}
+        {id:1, title: 'My New Website', body: 'This is a beginner react project blog', author: 'James Pritchard'},
+        {id:2, title: 'Welcome Party', body: 'Getcha party hats on because we are...', author: 'Bob Smith'},
+        {id:3, title: 'Shrimp Gumbo Recipe', body: 'Good ole New Orleans Shrimp Gumbo...', author: 'James Pritchard'},
+        {id:4, title: 'Basic React Blog', body: 'Examples of how to use React to...', author: 'Joanne Micheals'},
+        {id:5, title: 'Sample Blog Post', body: 'I just got a new puppy. Her name is...', author: 'Roger Johnson'}
     ])
-
+    const handleDelete = (id) => {
+        const newBlogs  = blog.filter(blog => blog.id !== id);
+        setBlog(newBlogs)
+    }
     return (
         <div className="home">
-            {blog.map((blog)=>(
-                <div className="blog-preview" key={blog.id}>
-                    <h3> {blog.title} </h3>
-                    <p>{blog.body}</p>
-                    <small> by {blog.author} </small>
-                </div>
-            ))}
+            <BlogList blog={blog} title='All Blogs' handleDelete={handleDelete}/>
+            <BlogList blog={blog.filter((blog) => blog.author === 'James Pritchard') } title="James' Posts" handleDelete={handleDelete}/>
         </div>
     );
 }
