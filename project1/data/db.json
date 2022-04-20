@@ -1,0 +1,28 @@
+{
+  "blog": [
+    {
+      "id": 1,
+      "title": "My New Website",
+      "body": "This is a beginner React blog",
+      "author": "James"
+    },
+    {
+      "id": 2,
+      "title": "Welcome Party",
+      "body": "Getcha party hats on because we are having a shindig",
+      "author": "Bob"
+    },
+    {
+      "id": 3,
+      "title": "Shrimp Gumbo Recipe",
+      "body": "Good ole New Orleans style shrimp gumbo",
+      "author": "Claire"
+    },
+    {
+      "id": 4,
+      "title": "Basic React Blog",
+      "body": "This is a how-to on how to make this site",
+      "author": "James"
+    }
+  ]
+}
