@@ -1,0 +1,36 @@
+npm init
+npm i mongoose dotenv express express-async-handler colors
+
+projectFolder/backend/server.js
+
+const express = require('express');
+const dotenv = require("dotenv").config();
+const colors = require("colors")
+const port = process.env.PORT || 5001;
+const connectDB = async () => {
+    try{
+        const conn = await mongoose.connect(process.env.MONGODB_URI);
+        console.log(`Mongo Database Connected:${conn.connection.host}`.brightBlue.underline);
+    }catch(error){
+        console.log(error);
+        process.exit(1);
+    }
+}
+connectDB();
+const app = express();
+app.use(express.json());
+app.use(express.urlencoded({extended:false}));
+app.use('/api/goals', require('./routes/goal.routes'))
+app.use(errorHandler)
+app.listen(port, ()=>console.log(`Server running on PORT ${port}`))
+
+
+
+usermodel schema
+add user field to goal model schema
+new file user.routes.js 
+add route to server.js
+user routes
+user controller
+install bcryptjs + jsonwebtoken
+authMiddleware
