@@ -1,0 +1,64 @@
+:root{
+  --clr-primary-200: hsl(94, 100%, 20%);
+  --clr-primary-400: hsl(94, 100%, 40%);
+  --clr-primary-500: hsl(94, 100%, 50%);
+  --clr-primary-600: hsl(94, 100%, 60%);
+  --clr-primary-800: hsl(94, 100%, 80%);
+  --clr-primary-1000: hsl(94, 100%, 99%);
+
+  --clr-secondary-100: hsl(7, 100%, 10%);
+  --clr-secondary-200: hsl(7, 100%, 20%);
+  --clr-secondary-400: hsl(7, 100%, 40%);
+  --clr-secondary-600: hsl(7, 100%, 60%);
+  --clr-secondary-800: hsl(7, 100%, 80%);
+  --clr-secondary-1000: hsl(7, 100%, 95%);
+}
+
+body{
+  background-color: var(--clr-primary-800);
+}
+.App {
+  display:grid;
+  gap:0.5rem;
+  margin:0.5rem;
+  text-align: center;
+}
+
+@media (min-width:400px) {
+  .App{grid-template-columns: repeat(2, 1fr);
+}
+}
+@media (min-width:600px) {
+  .App{grid-template-columns: repeat(3, 1fr);
+}
+}
+@media (min-width:800px) {
+  .App{grid-template-columns: repeat(4, 1fr);
+}
+}
+@media (min-width:1800px) {
+  .App{grid-template-columns: repeat(6, 1fr);
+}
+}
+.App > *{
+  background-color: var(--clr-secondary-1000);
+  padding:0.5rem;
+  border:6px solid var(--clr-primary-200);
+  border-radius: 20px;
+}
+
+.row-span-2{
+  grid-row: span 2;
+}
+
+button{
+  width:100%;
+  padding: 1rem 1.3rem;
+  border-radius: 15px;
+  background-color: var(--clr-secondary-100);
+  color: var(--clr-primary-1000);
+  border:none;
+  font-size: 1.1em;
+  font-family: monospace;
+  font-weight: 700;
+}
