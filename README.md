@@ -16,3 +16,11 @@ MERN - redux, jwt
 Grocerix
 MERN - redux, jwt
 ---
+## Project 5 
+Cake and Icecream
+Redux
+---
+## Project 6 
+Cake and Icecream
+ReduxToolkit
+---
