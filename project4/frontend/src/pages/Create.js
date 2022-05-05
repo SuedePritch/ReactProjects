@@ -1,48 +1,40 @@
-import { useState } from "react";
+import { useEffect } from "react";
 import {useNavigate} from 'react-router-dom'
+import { useSelector, useDispatch} from 'react-redux';
 
-const Create = () => {
-    const [title, setTitle]= useState('');
-    const [recipe, setRecipe]= useState('');
-    const [isPending, setIsPending] = useState(false);
+import MealForm from "../components/MealForm";
+import {getMeals, reset} from '../services/mealSlice'
+
+function Create() {
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {user} = useSelector((state) => state.auth)
+    const {meals, isError, message} = useSelector((state) => state.meals)
+  
+    useEffect(() =>{
+      if(isError){
+        console.log(message);
+      }
+      if(!user){
+          navigate('/login')
+      }
+      dispatch(getMeals())
+  
+      return () =>{
+        dispatch(reset())
+      }
+    }, [user, navigate, isError, message, dispatch])
+  
 
-    const handleSubmit = (e) =>{
-        e.preventDefault();
-        const meal = {title, recipe};
-        
-        setIsPending(true);
-
-        fetch('http://localhost:8000/api/meals', {
-            method:'POST',
-            headers: {'Content-Type': "application/json"},
-            body: JSON.stringify(meal)
-        }).then(() => {
-            console.log('new meal added');
-            setIsPending(false);
-            navigate("/");
-        })
-    }
     return ( 
         <div className="create">
-            <h2>Add a new Meal</h2>
-            <form onSubmit={handleSubmit}>
-                <label>Meal Title</label>
-                <input 
-                type="text" 
-                required 
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                />
-                <label>Recipe</label>
-                <textarea
-                value={recipe}
-                onChange={(e) => setRecipe(e.target.value)}
-                />
-                {!isPending && <button>Add Meal</button>}
-                {isPending && <button disabled>Uploading..</button>}
-            </form>
+            <section className="heading">
+                <h1>Welcome {user && user.name}</h1>
+                <p>Create New Meal</p>
+            </section>
+            <MealForm/>
         </div>
+            
     );
 }
 
