@@ -9,7 +9,7 @@ function Create() {
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const {user} = useSelector((state) => state.auth)
-    const {meals, isError, message} = useSelector((state) => state.meals)
+    const {isError, message} = useSelector((state) => state.meals)
   
     useEffect(() =>{
       if(isError){

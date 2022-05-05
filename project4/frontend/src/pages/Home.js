@@ -5,6 +5,7 @@
 import MealList from '../components/MealList';
 import useFetch from '../services/useFetch';
 import Loading from '../components/Loading';
+import MealForm from '../components/MealForm'
 
 
 function Home() {
@@ -23,6 +24,7 @@ function Home() {
         <div className="home">
             {error && <div>{error}</div>}
             {isPending && <div><Loading/></div>}
+            <MealForm />
             {meals && <MealList meals={meals} title='All Meals' />}
             
         </div>

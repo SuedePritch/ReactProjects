@@ -6,7 +6,7 @@ const User = require('../models/user.model')
 //GET /api/Meals
 //ACCESS PRIVATE
 const getMeals =asyncHandler(async (req,res) =>{
-    const meals = await Meal.find({user : req.user.id})
+    const meals = await Meal.find()
     res.status(200).json(meals)
 })
 
@@ -17,12 +17,12 @@ const getMeals =asyncHandler(async (req,res) =>{
 const newMeal =asyncHandler(async (req,res) =>{
     if(!req.body.title){
         res.status(400)
-        throw new Error ('Please add a title')
+        throw new Error ('Please add a text field')
     }
     const meal = await Meal.create({
         title:req.body.title,
         category:req.body.category,
-        ingredients:req.body.ingredients,
+        ingredients: req.body.ingredients,
         recipe:req.body.recipe,
         user: req.user.id
 
@@ -50,7 +50,7 @@ const editMeal =asyncHandler(async (req,res) =>{
         res.status(401)
         throw new Error('User not authorized')
     }
-    const updatedMeal = await Meal.findByIdAndUpdate(req.params.id, req.body, {new:true})
+    const updatedMeal = await Meal.findByIdAndUpdate(req.params.id, req.recipe, {new:true})
     res.status(200).json(updatedMeal)
 })
 

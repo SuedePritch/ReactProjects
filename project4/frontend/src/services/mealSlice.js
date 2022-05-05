@@ -91,7 +91,7 @@ export const mealSlice = createSlice({
       .addCase(createMeal.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
-        state.meals.push(action.payload)
+        state.meals = action.payload
       })
       .addCase(createMeal.rejected, (state, action) => {
         state.isLoading = false

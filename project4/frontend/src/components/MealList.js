@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import './MealList.css'
-const MealList = ({meals}) => {
+const MealList = ({meals, title}) => {
     return (
         <div className="meallist">
             {meals.map((meals)=>(

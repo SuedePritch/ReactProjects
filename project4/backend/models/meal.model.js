@@ -8,13 +8,7 @@ const mealSchema = mongoose.Schema(
 },
     "title": String,
     "category": String,
-    "ingredients": {
-        "dairySection":[String],
-        "meatSection": [String],
-        "produceSection":[String],
-        "drySection": [String],
-        "spiceSection": [String],
-    },
+    "ingredients": [],
     "recipe": String
 }
 )
